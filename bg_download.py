@@ -28,9 +28,9 @@ def parse(pageNo):
     resp = requests.get(f'http://simpledesktops.com/browse/{pageNo}/')
     # pattern = re.compile("<a href=\"browse/desktops/.*?\">")
     # print(resp.text)
-    list = re.findall("<a href=\"/browse/desktops/.*?/\">\n", resp.text)
+    list = re.findall("<a href=\"(/browse/desktops/.*?/)\">\n", resp.text)
     for str in list:
-        path = str.split("\"")[1]
+        path = str
         path = "http://simpledesktops.com" + path
         url = get_download_url(path)
         print(url)
